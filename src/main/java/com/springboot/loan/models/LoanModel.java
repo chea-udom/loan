@@ -10,6 +10,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,11 +34,11 @@ public class LoanModel {
     private double loanAmt;
 
     @OneToOne
-    @JoinColumn(name="cus_id")
+    @JoinColumn(name="cus_id",nullable = false)
     private CustomerModel customer;
 
     @OneToOne
-    @JoinColumn(name="dealer_id")
+    @JoinColumn(name="dealer_id", nullable = false)
     private DealerModel dealer;
 
     

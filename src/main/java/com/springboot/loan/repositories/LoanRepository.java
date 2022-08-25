@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.springboot.loan.models.LoanModel;
 
 @Repository
-public interface LoadRepository extends JpaRepository<LoanModel, Long> {
+public interface LoanRepository extends JpaRepository<LoanModel, Long> {
     
 }
