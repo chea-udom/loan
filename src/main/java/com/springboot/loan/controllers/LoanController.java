@@ -42,7 +42,8 @@ public class LoanController {
             loan.getDealer().setDob(new Date());
             ex.printStackTrace();
         }
-        loanService.saveLoan(loan);
+        //loanService.saveLoan(loan);
+        System.out.println(loan);
         return "loan_page";
         
     }
