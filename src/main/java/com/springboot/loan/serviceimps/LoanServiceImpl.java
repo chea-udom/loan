@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.loan.dto.LoanRequest;
+import com.springboot.loan.dto.Request;
 import com.springboot.loan.models.LoanModel;
 import com.springboot.loan.repositories.LoanRepository;
 import com.springboot.loan.services.LoanService;
@@ -27,23 +28,23 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
-    public List<LoanModel> getLoanList() {
+    public List<LoanModel> getList() {
         
         return loanRepository.findAll();
     }
 
     @Override
-    public LoanModel saveLoan(LoanRequest loanRequest) {
+    public LoanModel save(LoanRequest loanRequest) {
         return loanRepository.save(loanRequest.toModel());
     }
 
     @Override
-    public LoanModel saveLoan(LoanModel loanModel) {
+    public LoanModel save(LoanModel loanModel) {
         return loanRepository.save(loanModel);
     }
 
     @Override
-    public boolean deleteLoan(LoanModel loanModel) {
+    public boolean delete(LoanModel loanModel) {
         boolean existed=isExisted(loanModel);
         if(existed){
             loanRepository.delete(loanModel);
@@ -53,7 +54,7 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
-    public boolean deleteLoan(Long id) {
+    public boolean delete(Long id) {
         boolean existed=loanRepository.existsById(id);
         if(existed){
             loanRepository.deleteById(id);
