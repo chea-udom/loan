@@ -19,6 +19,7 @@ import com.springboot.loan.models.LoanModel;
 import com.springboot.loan.serviceimps.CustomerServiceImpl;
 import com.springboot.loan.serviceimps.DealerServiceImpl;
 import com.springboot.loan.serviceimps.LoanServiceImpl;
+import com.springboot.loan.utils.DateUtils;
 
 @Controller
 @RequestMapping("/loan")
@@ -44,15 +45,9 @@ public class LoanController {
     }
     @PostMapping
     public String submitLoan(@ModelAttribute LoanModel loan, @RequestParam("cus_dob") String cusDob, @RequestParam("dealer_dob") String dealerDob){
-        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-        try{
-            loan.getCustomer().setDob(format.parse(cusDob));
-            loan.getDealer().setDob(format.parse(dealerDob));
-        }catch(ParseException ex){
-            loan.getCustomer().setDob(new Date());
-            loan.getDealer().setDob(new Date());
-            ex.printStackTrace();
-        }
+        loan.getCustomer().setDob(DateUtils.dateFormat(cusDob));
+        loan.getDealer().setDob(DateUtils.dateFormat(dealerDob));
+
         CustomerModel cus=loan.getCustomer();
         DealerModel dealer=loan.getDealer();
 

@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.loan.dto.DealerRequest;
+import com.springboot.loan.dto.DealerResponse;
 import com.springboot.loan.models.DealerModel;
 import com.springboot.loan.repositories.DealerRepository;
 import com.springboot.loan.services.DealerService;
+import com.springboot.loan.utils.DateUtils;
 
 @Service
 public class DealerServiceImpl implements DealerService {
@@ -29,13 +31,7 @@ public class DealerServiceImpl implements DealerService {
 
     @Override
     public DealerModel save(DealerRequest request) {
-        DealerModel model=null;
-        try{
-            return dealerRepository.save(request.toModel());
-        }catch(ParseException ex){
-            ex.printStackTrace();
-        }
-        return model;
+        return dealerRepository.save(request.toModel());
     }
 
     @Override
@@ -66,6 +62,11 @@ public class DealerServiceImpl implements DealerService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public DealerResponse getForResponse(DealerModel model) {
+        return new DealerResponse(model.getId(),model.getName(),model.getSex(),model.getPosition(),DateUtils.toString(model.getDob()));
     }
     
 }

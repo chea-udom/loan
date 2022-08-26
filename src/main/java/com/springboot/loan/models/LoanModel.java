@@ -24,7 +24,7 @@ import lombok.ToString;
 public class LoanModel {
     @Id
     @Column(name="loan_id", nullable = false, unique = true)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "ln_amt")

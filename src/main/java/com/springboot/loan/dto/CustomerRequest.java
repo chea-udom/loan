@@ -3,7 +3,7 @@ package com.springboot.loan.dto;
 import com.springboot.loan.models.CustomerModel;
 import com.springboot.loan.utils.DateUtils;
 
-public class CustomerRequest extends PersonRequest {
+public class CustomerRequest extends PersonRequest<CustomerModel> {
 
     private String cardId;
 

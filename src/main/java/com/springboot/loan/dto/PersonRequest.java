@@ -4,14 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Setter @Getter
-public abstract class PersonRequest implements Request {
+public abstract class PersonRequest<T> implements Request<T> {
 
-    private String name;
+    protected String name;
 
-    private String sex;
+    protected String sex;
 
-    private String dob;
+    protected String dob;
 
-    private String position;
+    protected String position;
 
 }

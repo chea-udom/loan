@@ -20,4 +20,8 @@ public interface Service<T, U extends Request, V extends Response> {
     boolean delete(T model);
 
     boolean delete(Long id);
+
+    V getForResponse(T model);
+
+    
 }

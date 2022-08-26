@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-import com.springboot.loan.utils.PersonUtils;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,11 +19,13 @@ import lombok.ToString;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
 @ToString
+@MappedSuperclass
 public abstract class PersonModel {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
     private Long id;
 
     private String name;

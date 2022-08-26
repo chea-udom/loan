@@ -1,18 +1,16 @@
 package com.springboot.loan.dto;
 
-import com.springboot.loan.models.CustomerModel;
-import com.springboot.loan.models.DealerModel;
 import com.springboot.loan.models.LoanModel;
 
-public class LoanRequest implements Request {
+public class LoanRequest implements Request<LoanModel> {
 
     private double loanAmt;
 
-    private CustomerModel customer;
+    private CustomerRequest customereRequest;
 
-    private DealerModel dealerModel;
+    private DealerRequest dealerRequest;
 
     public LoanModel toModel(){
-        return new LoanModel(null, loanAmt, customer, dealerModel);
+        return new LoanModel(null, loanAmt, customereRequest.toModel(), dealerRequest.toModel());
     }
 }

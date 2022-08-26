@@ -20,8 +20,32 @@ public class DealerModel extends PersonModel {
     }
 
     @Override
-    @Column(name = "dealer_id", nullable = false, unique = true)
+    @Column(name = "dealer_id")
     public Long getId(){
         return super.getId();
+    }
+
+    @Override
+    @Column(name = "dealer_name")
+    public String getName(){
+        return super.getName();
+    }
+
+    @Override
+    @Column(name = "dealer_sex")
+    public String getSex(){
+        return super.getSex();
+    }
+
+    @Override
+    @Column(name = "dealer_pos")
+    public String getPosition(){
+        return super.getPosition();
+    }
+
+    @Override
+    @Column(name = "dealer_dob")
+    public Date getDob(){
+        return super.getDob();
     }
 }

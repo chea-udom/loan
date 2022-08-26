@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.loan.dto.CustomerRequest;
+import com.springboot.loan.dto.CustomerResponse;
 import com.springboot.loan.models.CustomerModel;
 import com.springboot.loan.repositories.CustomerRepository;
 import com.springboot.loan.services.CustomerService;
+import com.springboot.loan.utils.DateUtils;
 
 @Service
 public class CustomerServiceImpl  implements CustomerService {
@@ -29,13 +31,7 @@ public class CustomerServiceImpl  implements CustomerService {
 
     @Override
     public CustomerModel save(CustomerRequest request) {
-        CustomerModel model=null;
-        try{
-            return customerRepository.save(request.toModel());
-        }catch(ParseException ex){
-            ex.printStackTrace();
-        }
-        return model;
+        return customerRepository.save(request.toModel());
     }
 
     @Override
@@ -66,6 +62,11 @@ public class CustomerServiceImpl  implements CustomerService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public CustomerResponse getForResponse(CustomerModel model) {
+        return new CustomerResponse(model.getId(), model.getName(), model.getSex(), model.getPosition(), DateUtils.toString(model.getDob()), model.getCardId());
     }
     
 }
