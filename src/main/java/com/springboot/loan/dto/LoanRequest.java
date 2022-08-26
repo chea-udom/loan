@@ -4,7 +4,7 @@ import com.springboot.loan.models.CustomerModel;
 import com.springboot.loan.models.DealerModel;
 import com.springboot.loan.models.LoanModel;
 
-public class LoanRequest {
+public class LoanRequest implements Request {
 
     private double loanAmt;
 

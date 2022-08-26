@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Setter @Getter
-public abstract class PersonRequest {
+public abstract class PersonRequest implements Request {
 
     private String name;
 

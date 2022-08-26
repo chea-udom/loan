@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.springboot.loan.models.CustomerModel;
+import com.springboot.loan.models.DealerModel;
 import com.springboot.loan.models.LoanModel;
+import com.springboot.loan.serviceimps.CustomerServiceImpl;
+import com.springboot.loan.serviceimps.DealerServiceImpl;
 import com.springboot.loan.serviceimps.LoanServiceImpl;
 
 @Controller
@@ -22,12 +26,19 @@ public class LoanController {
     
     @Autowired
     private LoanServiceImpl loanService;
+    @Autowired
+    private CustomerServiceImpl customerService;
+    @Autowired
+    private DealerServiceImpl dealerService;
 
     @GetMapping
     public ModelAndView loanPage(){
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.setViewName("loan_page");
-        modelAndView.addObject("loanModel", new LoanModel());
+        LoanModel loan=new LoanModel();
+        loan.setCustomer(new CustomerModel());
+        loan.setDealer(new DealerModel());
+        modelAndView.addObject("loanModel", loan);
 
         return modelAndView;
     }
@@ -42,7 +53,13 @@ public class LoanController {
             loan.getDealer().setDob(new Date());
             ex.printStackTrace();
         }
-        //loanService.saveLoan(loan);
+        CustomerModel cus=loan.getCustomer();
+        DealerModel dealer=loan.getDealer();
+
+        customerService.save(cus);
+        dealerService.save(dealer);
+        loanService.save(loan);
+
         System.out.println(loan);
         return "loan_page";
         

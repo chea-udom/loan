@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.loan.dto.LoanRequest;
-import com.springboot.loan.dto.Request;
 import com.springboot.loan.models.LoanModel;
 import com.springboot.loan.repositories.LoanRepository;
 import com.springboot.loan.services.LoanService;
